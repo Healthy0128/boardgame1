@@ -15,19 +15,62 @@
     <div class="brand"><span class="brand-dot"></span><span>BOARD TABLE</span></div>
     <button id="soundBtn" class="icon-btn" aria-label="サウンド切替">♪</button>
   </header>
+
   <main>
     <section id="home" class="screen active home-screen">
-      <div class="hero"><div class="eyebrow">PASS & PLAY</div><h1>1台で、すぐ対戦。</h1><p>スマホ・タブレット・PC対応。相手と向かい合って遊べる3つの定番ボードゲーム。</p></div>
+      <div class="hero">
+        <div class="eyebrow">PASS & PLAY</div>
+        <h1>1台で、すぐ対戦。</h1>
+        <p>スマホ・タブレット・PC対応。相手と向かい合って遊べる3つの定番ボードゲーム。</p>
+      </div>
       <div class="game-grid">
-        <button class="game-card reversi-card" data-game="reversi"><div class="card-art reversi-art"><span class="disc black"></span><span class="disc white"></span></div><div class="card-copy"><small>8 × 8</small><h2>リバーシ</h2><p>はさんで、返して、盤面を取る。</p></div><span class="play-chip">PLAY</span></button>
-        <button class="game-card shogi-card" data-game="shogi"><div class="card-art shogi-art"><span>王</span><span>飛</span><span>歩</span></div><div class="card-copy"><small>9 × 9</small><h2>将棋</h2><p>取った駒も使える、日本の戦略ゲーム。</p></div><span class="play-chip">PLAY</span></button>
-        <button class="game-card chess-card" data-game="chess"><div class="card-art chess-art"><img src="https://sashite.dev/assets/chess/sides/first/representations/western/king.svg" alt=""><img src="https://sashite.dev/assets/chess/sides/second/representations/western/queen.svg" alt=""></div><div class="card-copy"><small>8 × 8</small><h2>チェス</h2><p>世界中で遊ばれる王道ストラテジー。</p></div><span class="play-chip">PLAY</span></button>
+        <button class="game-card reversi-card" data-game="reversi">
+          <div class="card-art reversi-art"><span class="disc black"></span><span class="disc white"></span></div>
+          <div class="card-copy"><small>8 × 8</small><h2>リバーシ</h2><p>はさんで、返して、盤面を取る。</p></div>
+          <span class="play-chip">PLAY</span>
+        </button>
+        <button class="game-card shogi-card" data-game="shogi">
+          <div class="card-art shogi-art"><span>王</span><span>飛</span><span>歩</span></div>
+          <div class="card-copy"><small>9 × 9</small><h2>将棋</h2><p>取った駒も使える、日本の戦略ゲーム。</p></div>
+          <span class="play-chip">PLAY</span>
+        </button>
+        <button class="game-card chess-card" data-game="chess">
+          <div class="card-art chess-art"><img src="assets/chess/white_king.svg" alt=""><img src="assets/chess/black_queen.svg" alt=""></div>
+          <div class="card-copy"><small>8 × 8</small><h2>チェス</h2><p>世界中で遊ばれる王道ストラテジー。</p></div>
+          <span class="play-chip">PLAY</span>
+        </button>
       </div>
       <div class="home-note">端末をテーブルの中央に置いて遊ぶのがおすすめ</div>
     </section>
-    <section id="gameScreen" class="screen game-screen"><div class="game-shell"><div class="game-head"><div><div id="gameKicker" class="eyebrow"></div><h2 id="gameTitle"></h2></div><div id="turnBadge" class="turn-badge"></div></div><div id="status" class="status"></div><div id="capturedTop" class="captured captured-top"></div><div id="boardWrap" class="board-wrap"><div id="board" class="board"></div></div><div id="capturedBottom" class="captured captured-bottom"></div><div id="score" class="scorebar"></div><div class="controls"><button id="undoBtn">↶ 待った</button><button id="rotateBtn">⟳ 盤を回す</button><button id="restartBtn" class="danger">最初から</button></div></div></section>
+
+    <section id="gameScreen" class="screen game-screen">
+      <div class="game-shell">
+        <div class="game-head">
+          <div><div id="gameKicker" class="eyebrow"></div><h2 id="gameTitle"></h2></div>
+          <div id="turnBadge" class="turn-badge"></div>
+        </div>
+        <div id="status" class="status"></div>
+        <div id="capturedTop" class="captured captured-top"></div>
+        <div id="boardWrap" class="board-wrap"><div id="board" class="board"></div></div>
+        <div id="capturedBottom" class="captured captured-bottom"></div>
+        <div id="score" class="scorebar"></div>
+        <div class="controls">
+          <button id="undoBtn">↶ 待った</button>
+          <button id="rotateBtn">⟳ 盤を回す</button>
+          <button id="restartBtn" class="danger">最初から</button>
+        </div>
+      </div>
+    </section>
   </main>
-  <div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card"><div id="modalIcon" class="modal-icon">♛</div><h3 id="modalTitle"></h3><p id="modalText"></p><div id="modalActions" class="modal-actions"></div></div></div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div id="modalIcon" class="modal-icon">♛</div>
+      <h3 id="modalTitle"></h3>
+      <p id="modalText"></p>
+      <div id="modalActions" class="modal-actions"></div>
+    </div>
+  </div>
   <div id="toast" class="toast"></div>
 </div>
 <script src="app.js"></script>

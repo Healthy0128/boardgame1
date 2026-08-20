@@ -1,0 +1,35 @@
+name: Bundle game assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - app.js
+      - index.html
+      - styles.css
+      - sw.js
+      - scripts/fetch-assets.sh
+      - .github/workflows/bundle-assets.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download CC0 assets into repository
+        run: bash scripts/fetch-assets.sh
+      - name: Commit bundled assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- assets/chess assets/shogi
+          if git diff --cached --quiet; then
+            echo "Assets already bundled."
+            exit 0
+          fi
+          git commit -m "Bundle CC0 board game assets"
+          git push

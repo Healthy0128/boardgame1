@@ -15,7 +15,8 @@
 - PWA用マニフェストとサービスワーカーを同梱
 
 ## Assets
-将棋は Shogi Images、チェスは Sashité のCC0素材を表示に使用しています。
+チェスは Sashité、将棋は Shogi Images のCC0素材を使用しています。
+素材はGitHub Actionsで `assets/` 以下へ実ファイルとして取り込みます。ゲーム実行中に外部素材サイトへアクセスする必要はありません。
 
 ## GitHub Pages
 Settings > Pages から `main` ブランチのルートを公開してください。
