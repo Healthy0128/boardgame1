@@ -1,5 +1,5 @@
-const CACHE='board-table-v18';
-const CORE=['./','index.html','styles.css','extra-games.css','mancala-fix.css','howto.css','face-to-face.css','glass-visuals.css','direction-fix.css','sugoroku-effects.css','app.js','extra-games.js','rich-board.js','howto.js','face-to-face.js','glass-visuals.js','direction-fix.js','sugoroku-effects.js','manifest.webmanifest','assets/board/wood.png','assets/board/go_black.png','assets/board/go_white.png','assets/icons/icon-192.png','assets/icons/icon-512.png','assets/icons/apple-touch-icon.png','assets/icons/favicon-32.png'];
+const CACHE='board-table-v19';
+const CORE=['./','index.html','styles.css','extra-games.css','mancala-fix.css','howto.css','face-to-face.css','glass-visuals.css','direction-fix.css','sugoroku-effects.css','app.js','extra-games.js','rich-board.js','howto.js','face-to-face.js','glass-visuals.js','direction-fix.js','sugoroku-core-fix.js','sugoroku-effects.js','manifest.webmanifest','assets/board/wood.png','assets/board/go_black.png','assets/board/go_white.png','assets/icons/icon-192.png','assets/icons/icon-512.png','assets/icons/apple-touch-icon.png','assets/icons/favicon-32.png'];
 
 self.addEventListener('install',event=>{
   event.waitUntil((async()=>{
