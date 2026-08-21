@@ -1,5 +1,19 @@
-/* Shogi: each player's pieces always face that player. */
-body.face-to-face .shogi-board .shogi-piece[src*="/white_"]{transform:rotate(180deg)!important;transform-origin:center}
-body.face-to-face .shogi-board .shogi-piece[src*="/black_"]{transform:none!important;transform-origin:center}
-body.face-to-face.face-board-flipped .shogi-board .shogi-piece[src*="/white_"]{transform:none!important}
-body.face-to-face.face-board-flipped .shogi-board .shogi-piece[src*="/black_"]{transform:rotate(180deg)!important}
+/* Shogi orientation is intentionally mechanical: top and bottom are always exactly 180deg apart. */
+body.face-to-face{
+  --shogi-bottom-angle:0deg;
+  --shogi-top-angle:180deg;
+}
+body.face-to-face.face-board-flipped{
+  --shogi-bottom-angle:180deg;
+  --shogi-top-angle:0deg;
+}
+
+/* bottom side = black assets, top side = white assets */
+html body.face-to-face .shogi-board img.shogi-piece[src*="/black_"]{
+  transform:rotate(var(--shogi-bottom-angle))!important;
+  transform-origin:center!important;
+}
+html body.face-to-face .shogi-board img.shogi-piece[src*="/white_"]{
+  transform:rotate(var(--shogi-top-angle))!important;
+  transform-origin:center!important;
+}
