@@ -13,6 +13,7 @@ on:
       - 'glass-visuals.css'
       - 'direction-fix.js'
       - 'direction-fix.css'
+      - 'sugoroku-core-fix.js'
       - 'sugoroku-effects.js'
       - 'sugoroku-effects.css'
       - 'index.html'
@@ -35,6 +36,7 @@ jobs:
           node --check face-to-face.js
           node --check glass-visuals.js
           node --check direction-fix.js
+          node --check sugoroku-core-fix.js
           node --check sugoroku-effects.js
           bash -n scripts/install-rich-board-assets.sh
       - name: Verify home entries and rich asset hooks
@@ -51,12 +53,14 @@ jobs:
           grep -q 'glass-visuals.css' index.html
           grep -q 'direction-fix.js' index.html
           grep -q 'direction-fix.css' index.html
+          grep -q 'sugoroku-core-fix.js' index.html
           grep -q 'sugoroku-effects.js' index.html
           grep -q 'sugoroku-effects.css' index.html
           grep -q 'dice-rolling' sugoroku-effects.css
-          grep -q 'performance.now()-started<2000' sugoroku-effects.js
-          grep -q 'renderDie' sugoroku-effects.js
-          grep -q 'dieAlreadyCorrect' sugoroku-effects.js
+          grep -q 'performance.now()-started<2000' sugoroku-core-fix.js
+          grep -q 'async function stepTo' sugoroku-core-fix.js
+          grep -q 'session.pos\[player\]' sugoroku-core-fix.js
+          grep -q 'stopImmediatePropagation' sugoroku-core-fix.js
           grep -q "const isGote=src.includes('/white_')" direction-fix.js
           ! grep -q 'getBoundingClientRect' direction-fix.js
           ! grep -q 'function syncShogi' face-to-face.js
