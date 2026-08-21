@@ -1,1 +1,71 @@
-const CACHE='board-table-v5';const FILES=['./','index.html','styles.css','extra-games.css','app.js','extra-games.js','manifest.webmanifest','assets/audio/bgm/shogi_dojo.mp3','assets/audio/bgm/chess_jazz.mp3','assets/audio/bgm/reversi_calm.ogg','assets/audio/bgm/mancala_percussion.ogg','assets/audio/bgm/ohajiki_nostalgic.ogg','assets/audio/bgm/playful_board.mp3','assets/audio/bgm/gomoku_calm.mp3','assets/audio/chess/chess_move_01.ogg','assets/audio/chess/chess_move_02.ogg','assets/audio/chess/chess_move_03.ogg','assets/audio/reversi/disc_01.ogg','assets/audio/reversi/disc_02.ogg','assets/audio/reversi/disc_03.ogg','assets/audio/shogi/shogi_hit_01.ogg','assets/audio/shogi/shogi_hit_02.ogg','assets/audio/shogi/shogi_hit_03.ogg','assets/audio/mancala/stone_01.ogg','assets/audio/mancala/stone_02.ogg','assets/audio/mancala/stone_03.ogg','assets/audio/ohajiki/glass_01.ogg','assets/audio/ohajiki/glass_02.ogg','assets/audio/ohajiki/glass_03.ogg','assets/audio/ohajiki/glass_04.ogg','assets/audio/ohajiki/glass_05.ogg','assets/audio/ohajiki/glass_06.ogg','assets/chess/white_king.svg','assets/chess/white_queen.svg','assets/chess/white_rook.svg','assets/chess/white_bishop.svg','assets/chess/white_knight.svg','assets/chess/white_pawn.svg','assets/chess/black_king.svg','assets/chess/black_queen.svg','assets/chess/black_rook.svg','assets/chess/black_bishop.svg','assets/chess/black_knight.svg','assets/chess/black_pawn.svg','assets/shogi/board.png','assets/shogi/black_king.png','assets/shogi/black_rook.png','assets/shogi/black_bishop.png','assets/shogi/black_gold.png','assets/shogi/black_silver.png','assets/shogi/black_knight.png','assets/shogi/black_lance.png','assets/shogi/black_pawn.png','assets/shogi/black_dragon.png','assets/shogi/black_horse.png','assets/shogi/black_prom_silver.png','assets/shogi/black_prom_knight.png','assets/shogi/black_prom_lance.png','assets/shogi/black_prom_pawn.png','assets/shogi/white_king.png','assets/shogi/white_rook.png','assets/shogi/white_bishop.png','assets/shogi/white_gold.png','assets/shogi/white_silver.png','assets/shogi/white_knight.png','assets/shogi/white_lance.png','assets/shogi/white_pawn.png','assets/shogi/white_dragon.png','assets/shogi/white_horse.png','assets/shogi/white_prom_silver.png','assets/shogi/white_prom_knight.png','assets/shogi/white_prom_lance.png','assets/shogi/white_prom_pawn.png'];self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))));self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x))))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
+const CACHE='board-table-v6';
+const CORE=['./','index.html','styles.css','extra-games.css','app.js','extra-games.js','manifest.webmanifest'];
+
+self.addEventListener('install',event=>{
+  event.waitUntil((async()=>{
+    const cache=await caches.open(CACHE);
+    await Promise.allSettled(CORE.map(file=>cache.add(file)));
+    await self.skipWaiting();
+  })());
+});
+
+self.addEventListener('activate',event=>{
+  event.waitUntil((async()=>{
+    const keys=await caches.keys();
+    await Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)));
+    await self.clients.claim();
+  })());
+});
+
+self.addEventListener('fetch',event=>{
+  const req=event.request;
+  if(req.method!=='GET')return;
+
+  // Always prefer the network for page navigations so a newly deployed
+  // BOARD TABLE becomes visible immediately. Fall back to the cached shell
+  // only when offline.
+  if(req.mode==='navigate'){
+    event.respondWith((async()=>{
+      try{
+        const fresh=await fetch(req,{cache:'no-store'});
+        const cache=await caches.open(CACHE);
+        cache.put(req,fresh.clone());
+        return fresh;
+      }catch{
+        return (await caches.match(req)) || (await caches.match('./'));
+      }
+    })());
+    return;
+  }
+
+  // Scripts/styles also refresh in the background. Assets such as images and
+  // audio remain fast from cache after their first successful request.
+  const url=new URL(req.url);
+  const isCode=/\.(?:js|css|webmanifest)$/.test(url.pathname);
+  if(isCode){
+    event.respondWith((async()=>{
+      const cache=await caches.open(CACHE);
+      try{
+        const fresh=await fetch(req,{cache:'no-store'});
+        cache.put(req,fresh.clone());
+        return fresh;
+      }catch{
+        return (await cache.match(req)) || Response.error();
+      }
+    })());
+    return;
+  }
+
+  event.respondWith((async()=>{
+    const cache=await caches.open(CACHE);
+    const cached=await cache.match(req);
+    if(cached)return cached;
+    try{
+      const fresh=await fetch(req);
+      if(fresh.ok)cache.put(req,fresh.clone());
+      return fresh;
+    }catch{
+      return Response.error();
+    }
+  })());
+});
