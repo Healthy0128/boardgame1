@@ -55,6 +55,9 @@ jobs:
           grep -q 'sugoroku-effects.css' index.html
           grep -q 'dice-rolling' sugoroku-effects.css
           grep -q 'performance.now()-started<2000' sugoroku-effects.js
+          grep -q 'renderDie' sugoroku-effects.js
+          grep -q 'dieAlreadyCorrect' sugoroku-effects.js
+          grep -q 'getBoundingClientRect' direction-fix.js
           grep -q 'face-far-piece' direction-fix.css
           grep -q 'mancala-pebble.p1' glass-visuals.css
           grep -q 'ohajiki-canvas' glass-visuals.js
