@@ -11,6 +11,10 @@ on:
       - 'face-to-face.css'
       - 'glass-visuals.js'
       - 'glass-visuals.css'
+      - 'direction-fix.js'
+      - 'direction-fix.css'
+      - 'sugoroku-effects.js'
+      - 'sugoroku-effects.css'
       - 'index.html'
       - 'sw.js'
       - 'scripts/install-rich-board-assets.sh'
@@ -30,6 +34,8 @@ jobs:
           node --check howto.js
           node --check face-to-face.js
           node --check glass-visuals.js
+          node --check direction-fix.js
+          node --check sugoroku-effects.js
           bash -n scripts/install-rich-board-assets.sh
       - name: Verify home entries and rich asset hooks
         run: |
@@ -43,6 +49,13 @@ jobs:
           grep -q 'face-to-face.css' index.html
           grep -q 'glass-visuals.js' index.html
           grep -q 'glass-visuals.css' index.html
+          grep -q 'direction-fix.js' index.html
+          grep -q 'direction-fix.css' index.html
+          grep -q 'sugoroku-effects.js' index.html
+          grep -q 'sugoroku-effects.css' index.html
+          grep -q 'dice-rolling' sugoroku-effects.css
+          grep -q 'performance.now()-started<2000' sugoroku-effects.js
+          grep -q 'face-far-piece' direction-fix.css
           grep -q 'mancala-pebble.p1' glass-visuals.css
           grep -q 'ohajiki-canvas' glass-visuals.js
           grep -q 'assets/board/wood.png' extra-games.css
@@ -54,4 +67,3 @@ jobs:
           grep -q 'face-top-side' face-to-face.js
           grep -q 'face-square-label' face-to-face.js
           grep -q 'generatedMutation' face-to-face.js
-          grep -q 'face-far-piece' face-to-face.css

@@ -1,0 +1,7 @@
+(()=>{'use strict';
+let flipped=false,lastTitle='';
+function title(){return document.querySelector('#gameTitle')?.textContent?.trim()||''}
+function sync(){const t=title();if(t!==lastTitle){flipped=false;lastTitle=t}document.body.classList.toggle('face-board-flipped',flipped);if(t==='チェス'){document.querySelectorAll('.chess-board .chess-piece').forEach(img=>{const src=img.getAttribute('src')||'';const far=flipped?src.includes('white_'):src.includes('black_');img.classList.toggle('face-far-piece',far);img.classList.toggle('face-near-piece',!far)})}if(t==='将棋'){document.querySelectorAll('.shogi-board .shogi-piece').forEach(img=>{const src=img.getAttribute('src')||'';const far=flipped?src.includes('/black_'):src.includes('/white_');img.classList.toggle('face-far-piece',far);img.classList.toggle('face-near-piece',!far)})}}
+const screen=document.querySelector('#gameScreen');if(screen)new MutationObserver(()=>requestAnimationFrame(sync)).observe(screen,{subtree:true,childList:true,characterData:true});
+document.addEventListener('click',e=>{if(e.target?.closest?.('#rotateBtn')){flipped=!flipped;requestAnimationFrame(sync)}},false);window.addEventListener('orientationchange',sync);window.addEventListener('resize',sync);sync();
+})();

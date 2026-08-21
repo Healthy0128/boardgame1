@@ -1,0 +1,1 @@
+body.face-to-face .chess-board .chess-piece.face-far-piece,body.face-to-face .shogi-board .shogi-piece.face-far-piece{transform:rotate(180deg)!important;transform-origin:center}body.face-to-face .chess-board .chess-piece.face-near-piece,body.face-to-face .shogi-board .shogi-piece.face-near-piece{transform:none!important}
