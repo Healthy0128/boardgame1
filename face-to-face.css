@@ -2,7 +2,6 @@
 body.face-to-face .game-head,
 body.face-to-face #status,
 body.face-to-face #score{display:none!important}
-
 body.face-to-face .game-shell{display:flex;flex-direction:column;align-items:stretch}
 body.face-to-face .face-hud{width:min(96vw,760px);margin:6px auto;padding:8px 10px;border:1px solid rgba(255,255,255,.11);border-radius:14px;background:rgba(22,27,33,.94);box-shadow:0 8px 24px rgba(0,0,0,.24);display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;min-height:44px}
 body.face-to-face .face-hud.top{transform:rotate(180deg)}
@@ -17,25 +16,20 @@ body.face-to-face .face-mini-actions{display:flex;gap:4px}
 body.face-to-face .face-mini-actions button{border:1px solid rgba(255,255,255,.12);background:#242a31;border-radius:9px;padding:6px 8px;font-size:11px;font-weight:850;min-width:34px;cursor:pointer}
 body.face-to-face .face-mini-actions button.danger{color:#ff9b9b}
 body.face-to-face .face-primary{border:0;background:var(--accent);color:#111;border-radius:9px;padding:6px 8px;font-size:11px;font-weight:900;cursor:pointer}
-
-/* Original bottom controls stay for the near-side player. */
 body.face-to-face .controls{width:min(96vw,760px);margin:7px auto 0}
 
-/* Captured pieces/hands already sit on opposite sides; keep each readable from its owner. */
+/* The far-side captured hand is physically read from the opposite edge. */
 body.face-to-face .captured-top{transform:rotate(180deg)}
 body.face-to-face .captured-bottom{transform:none}
 
-/* Shogi is directional: gote/white pieces must face the player across the table. */
+/* Shogi is directional: the far-side player's pieces face that player. */
 body.face-to-face .shogi-board .shogi-piece[src*="white_"]{transform:rotate(180deg)}
-body.face-to-face .captured-top .shogi-piece,
-body.face-to-face .captured-top .hand-piece{transform:rotate(180deg)}
 
-/* Mancala: each player's pit/store number faces that player. */
-body.face-to-face .mancala-board .pit[style*="grid-row: 1"] .pit-count{transform:rotate(180deg)}
-body.face-to-face .mancala-board .store.left .pit-count{transform:translateX(50%) rotate(180deg)}
-body.face-to-face .mancala-board .pit[style*="grid-row: 2"] .pit-count,
-body.face-to-face .mancala-board .store.right .pit-count{transform:none}
-body.face-to-face .mancala-board .store.right .pit-count{transform:translateX(50%)}
+/* Mancala: top-row pits and the top player's store count face the far player. */
+body.face-to-face .mancala-board .pit.face-top-side .pit-count{transform:rotate(180deg)}
+body.face-to-face .mancala-board .store.face-top-side .pit-count{transform:translateX(50%) rotate(180deg)}
+body.face-to-face .mancala-board .pit.face-bottom-side .pit-count{transform:none}
+body.face-to-face .mancala-board .store.face-bottom-side .pit-count{transform:translateX(50%)}
 
 /* Sugoroku square text is printed in both directions, like a tabletop board. */
 body.face-to-face .sq{position:relative;padding-top:17px;padding-bottom:17px}
@@ -52,7 +46,6 @@ body.face-to-face .sq>.face-original-label{visibility:hidden}
  body.face-to-face .face-meta{font-size:8px}
  body.face-to-face .face-mini-actions button,body.face-to-face .face-primary{padding:5px 6px;font-size:10px}
 }
-
 @media(orientation:landscape) and (max-height:650px){
  body.face-to-face .face-hud{width:min(70vw,760px);min-height:32px;margin:2px auto;padding:4px 7px}
  body.face-to-face .face-meta{display:none}
