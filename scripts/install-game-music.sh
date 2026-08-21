@@ -79,3 +79,5 @@ All music below is bundled locally and released as CC0 / Public Domain on OpenGa
 Physical SFX use the CC0 `100 CC0 SFX #2` collection mirrored at `lavenderdotpet/CC0-Public-Domain-Sounds`.
 Runtime never fetches source URLs; the game uses only committed files under `assets/audio/`.
 EOF
+
+# Trigger marker: per-game audio bundle v1
