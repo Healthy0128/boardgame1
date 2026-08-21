@@ -14,7 +14,7 @@ on:
       - 'direction-fix.js'
       - 'direction-fix.css'
       - 'shogi-face-fix.css'
-      - 'shogi-piece-angle.js'
+      - 'shogi-single-source.js'
       - 'sugoroku-core-fix.js'
       - 'sugoroku-effects.js'
       - 'sugoroku-effects.css'
@@ -38,7 +38,7 @@ jobs:
           node --check face-to-face.js
           node --check glass-visuals.js
           node --check direction-fix.js
-          node --check shogi-piece-angle.js
+          node --check shogi-single-source.js
           node --check sugoroku-core-fix.js
           node --check sugoroku-effects.js
           bash -n scripts/install-rich-board-assets.sh
@@ -51,10 +51,11 @@ jobs:
           grep -q 'performance.now()-started<2000' sugoroku-core-fix.js
           grep -q 'async function stepTo' sugoroku-core-fix.js
           grep -q 'session.pos\[player\]' sugoroku-core-fix.js
-          grep -q 'shogi-piece-angle.js' index.html
-          grep -q 'dataset.pieceAngle' shogi-piece-angle.js
-          grep -q "topPiece?180:0" shogi-piece-angle.js
-          grep -q "topPiece?0:180" shogi-piece-angle.js
+          grep -q 'shogi-single-source.js' index.html
+          grep -q "replace('/white_','/black_')" shogi-single-source.js
+          grep -q "owner==='w'?180:0" shogi-single-source.js
+          grep -q "owner==='w'?0:180" shogi-single-source.js
+          ! grep -q 'shogi-piece-angle.js' index.html
           ! grep -q "if(t==='将棋')" direction-fix.js
           ! grep -q 'getBoundingClientRect' direction-fix.js
           ! grep -q 'function syncShogi' face-to-face.js
