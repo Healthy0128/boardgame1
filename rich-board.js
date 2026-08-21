@@ -1,4 +1,5 @@
 (()=>{'use strict';
+if(!document.querySelector('link[data-mancala-fix]')){const link=document.createElement('link');link.rel='stylesheet';link.href='mancala-fix.css';link.dataset.mancalaFix='1';document.head.appendChild(link)}
 const positions=[[18,24],[42,18],[68,28],[28,52],[55,50],[78,58],[18,72],[44,76],[68,78],[34,34],[58,34],[82,38]];
 let sowing=false;
 function makePebble(i,n){const s=document.createElement('i');s.className='mancala-pebble p'+((i+n)%4+1);const [x,y]=positions[i%positions.length];s.style.left=x+'%';s.style.top=y+'%';s.style.setProperty('--r',`${-24+(i*37)%48}deg`);return s}
@@ -17,7 +18,7 @@ async function interceptMancalaClick(ev){const pit=ev.target.closest('.mancala-b
   sowing=true;document.body.classList.add('mancala-sowing');
   const original=pit.onclick;setVisualCount(pit,0);
   const p1=children.slice(7,13).some(x=>x.classList.contains('active'));
-  const ownStore=p1?6:13,oppStore=p1?13:6;
+  const oppStore=p1?13:6;
   let pos=start;
   for(let k=0;k<stones;k++){
     do{pos=(pos+1)%14}while(pos===oppStore);
