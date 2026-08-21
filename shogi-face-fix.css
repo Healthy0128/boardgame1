@@ -1,0 +1,5 @@
+/* Shogi: each player's pieces always face that player. */
+body.face-to-face .shogi-board .shogi-piece[src*="/white_"]{transform:rotate(180deg)!important;transform-origin:center}
+body.face-to-face .shogi-board .shogi-piece[src*="/black_"]{transform:none!important;transform-origin:center}
+body.face-to-face.face-board-flipped .shogi-board .shogi-piece[src*="/white_"]{transform:none!important}
+body.face-to-face.face-board-flipped .shogi-board .shogi-piece[src*="/black_"]{transform:rotate(180deg)!important}
