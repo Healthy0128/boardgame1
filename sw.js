@@ -1,5 +1,5 @@
-const CACHE='board-table-v11';
-const CORE=['./','index.html','styles.css','extra-games.css','mancala-fix.css','howto.css','face-to-face.css','app.js','extra-games.js','rich-board.js','howto.js','face-to-face.js','manifest.webmanifest','assets/board/wood.png','assets/board/go_black.png','assets/board/go_white.png'];
+const CACHE='board-table-v12';
+const CORE=['./','index.html','styles.css','extra-games.css','mancala-fix.css','howto.css','face-to-face.css','app.js','extra-games.js','rich-board.js','howto.js','face-to-face.js','manifest.webmanifest','assets/board/wood.png','assets/board/go_black.png','assets/board/go_white.png','assets/icons/icon-192.png','assets/icons/icon-512.png','assets/icons/apple-touch-icon.png','assets/icons/favicon-32.png'];
 
 self.addEventListener('install',event=>{
   event.waitUntil((async()=>{
