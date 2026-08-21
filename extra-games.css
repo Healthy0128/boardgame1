@@ -1,0 +1,33 @@
+/* Extra 2D game collection */
+.extra-art{font-size:60px;gap:10px;background:linear-gradient(145deg,#24303c,#10151b)}
+.mancala-art{background:linear-gradient(145deg,#bd7b39,#613a1d)}
+.ohajiki-art{background:radial-gradient(circle,#4b8eb8,#153248)}
+.gomoku-art{background:linear-gradient(145deg,#d5a55c,#805126)}
+.connect4-art{background:linear-gradient(145deg,#235ad1,#122a6d)}
+.sugoroku-art{background:linear-gradient(145deg,#e5a848,#73451d)}
+.hasami-art{background:linear-gradient(145deg,#c9954c,#6f451f)}
+.checkers-art{background:linear-gradient(135deg,#d3c1a4 50%,#694934 50%)}
+.dots-art{background:radial-gradient(circle,#495566,#1e242d)}
+.board.extra-board{box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.extra-grid{display:grid;width:min(94vw,610px);aspect-ratio:1;border-radius:8px;overflow:hidden}
+.gomoku-grid,.hasami-grid{grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);background:#d8a75e;border:8px solid #6f431f}
+.gomoku-grid .xcell,.hasami-grid .xcell{border-right:1px solid #4e311b;border-bottom:1px solid #4e311b}
+.xcell{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;cursor:pointer}
+.xstone{width:76%;height:76%;border-radius:50%;box-shadow:0 4px 7px rgba(0,0,0,.32)}
+.xstone.p1{background:radial-gradient(circle at 35% 28%,#555,#08090a 65%)}
+.xstone.p2{background:radial-gradient(circle at 35% 28%,#fff,#d9dde2 67%)}
+.xstone.red{background:radial-gradient(circle at 35% 28%,#ff8272,#a70f0f 68%)}
+.xstone.yellow{background:radial-gradient(circle at 35% 28%,#fff5a2,#e1ab0a 68%)}
+.connect4-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(6,1fr);width:min(94vw,610px);aspect-ratio:7/6;background:#1760d0;border:10px solid #0f3e8c;border-radius:18px;padding:8px;gap:6px}
+.connect4-grid .xcell{border-radius:50%;background:#e6ecf1;box-shadow:inset 0 4px 9px rgba(0,0,0,.25)}
+.connect4-grid .xstone{width:90%;height:90%}
+.mancala-board{width:min(96vw,720px);display:grid;grid-template-columns:90px repeat(6,1fr) 90px;grid-template-rows:repeat(2,100px);gap:9px;padding:16px;background:linear-gradient(#b77635,#70421e);border:8px solid #4d2c16;border-radius:40px;box-shadow:inset 0 10px 24px rgba(255,255,255,.16),0 20px 50px rgba(0,0,0,.45)}
+.pit,.store{border:0;border-radius:50%;background:radial-gradient(circle at 50% 60%,#573116,#754a25 50%,#9c652f 72%);color:#fff;font-size:23px;font-weight:900;box-shadow:inset 0 8px 18px rgba(0,0,0,.45);cursor:pointer}
+.store{grid-row:1/3;border-radius:38px;font-size:30px}.store.left{grid-column:1}.store.right{grid-column:8}
+.pit:disabled,.store:disabled{opacity:.72;cursor:default}.pit.active{outline:4px solid #ffd166;outline-offset:2px}
+.sugoroku-board{width:min(96vw,720px);display:grid;grid-template-columns:repeat(6,1fr);gap:7px;padding:12px;background:#202630;border-radius:18px}
+.sq{min-height:74px;background:#e9edf1;color:#17202b;border-radius:13px;padding:7px;font-size:11px;font-weight:800;display:flex;flex-direction:column;justify-content:space-between}.sq.special{background:#ffe19b}.tokens{display:flex;gap:4px}.token{width:22px;height:22px;border-radius:50%;border:2px solid #fff}.token.p1{background:#e94f4f}.token.p2{background:#397be7}.dice-panel{display:flex;gap:12px;justify-content:center;align-items:center;margin:12px}.dice{font-size:34px;background:#fff;color:#111;border-radius:14px;padding:8px 15px;font-weight:900}
+.checkers-grid{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:min(94vw,610px);aspect-ratio:1;border:8px solid #3d2c22;border-radius:8px;overflow:hidden}.checkers-grid .xcell.light{background:#d9c5a6}.checkers-grid .xcell.dark{background:#674936}.checker{width:72%;height:72%;border-radius:50%;box-shadow:inset 0 5px 7px rgba(255,255,255,.2),0 5px 8px rgba(0,0,0,.35)}.checker.p1{background:#d64242}.checker.p2{background:#222}.checker.king:after{content:'★';color:#ffd166;font-size:55%;display:grid;place-items:center;height:100%}.xcell.sel{box-shadow:inset 0 0 0 4px #ffd166}.xcell.hint:after{content:'';width:24%;height:24%;border-radius:50%;background:#ffd166;position:absolute}
+.dots-board{width:min(94vw,610px);aspect-ratio:1;display:grid;grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);background:#f2f4f7;border-radius:14px;padding:12px}.dot{width:12px;height:12px;border-radius:50%;background:#26313f;justify-self:center;align-self:center}.edge{align-self:stretch;justify-self:stretch;cursor:pointer;border-radius:8px}.edge.h{height:10px;align-self:center}.edge.v{width:10px;justify-self:center}.edge:hover{background:#ffd16655}.edge.p1{background:#e84d4d}.edge.p2{background:#397be7}.box{margin:3px;border-radius:8px}.box.p1{background:#e84d4d55}.box.p2{background:#397be755}
+.ohajiki-wrap{width:min(96vw,720px);position:relative}.ohajiki-canvas{width:100%;aspect-ratio:4/3;border-radius:22px;background:radial-gradient(circle,#d9f2ff,#7db3cf);border:8px solid #315e78;touch-action:none;display:block}.ohajiki-help{text-align:center;color:var(--muted);font-size:12px;margin-top:8px}
+@media(max-width:760px){.mancala-board{grid-template-columns:58px repeat(6,1fr) 58px;grid-template-rows:repeat(2,72px);gap:5px;padding:9px;border-radius:26px}.pit{font-size:17px}.store{font-size:23px}.sq{min-height:58px;padding:5px}.sugoroku-board{gap:4px;padding:7px}.extra-art{font-size:44px}}
