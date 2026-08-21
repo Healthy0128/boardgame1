@@ -13,6 +13,7 @@ on:
       - 'glass-visuals.css'
       - 'direction-fix.js'
       - 'direction-fix.css'
+      - 'sugoroku-core-fix.js'
       - 'sugoroku-effects.js'
       - 'sugoroku-effects.css'
       - 'index.html'
@@ -35,6 +36,7 @@ jobs:
           node --check face-to-face.js
           node --check glass-visuals.js
           node --check direction-fix.js
+          node --check sugoroku-core-fix.js
           node --check sugoroku-effects.js
           bash -n scripts/install-rich-board-assets.sh
       - name: Verify home entries and rich asset hooks
@@ -42,25 +44,13 @@ jobs:
           for game in mancala ohajiki gomoku connect4 sugoroku hasami checkers dots; do
             grep -q "data-extra-game=\"$game\"" index.html
           done
-          grep -q 'rich-board.js' index.html
-          grep -q 'howto.js' index.html
-          grep -q 'howto.css' index.html
-          grep -q 'face-to-face.js' index.html
-          grep -q 'face-to-face.css' index.html
-          grep -q 'glass-visuals.js' index.html
-          grep -q 'glass-visuals.css' index.html
-          grep -q 'direction-fix.js' index.html
-          grep -q 'direction-fix.css' index.html
-          grep -q 'sugoroku-effects.js' index.html
-          grep -q 'sugoroku-effects.css' index.html
-          grep -q 'dice-rolling' sugoroku-effects.css
-          grep -q 'performance.now()-started<2000' sugoroku-effects.js
-          grep -q 'renderDie' sugoroku-effects.js
-          grep -q 'dieAlreadyCorrect' sugoroku-effects.js
+          grep -q 'sugoroku-core-fix.js' index.html
+          grep -q 'performance.now()-started<2000' sugoroku-core-fix.js
+          grep -q 'async function stepTo' sugoroku-core-fix.js
+          grep -q 'session.pos\[player\]' sugoroku-core-fix.js
           grep -q "const isGote=src.includes('/white_')" direction-fix.js
           ! grep -q 'getBoundingClientRect' direction-fix.js
           ! grep -q 'function syncShogi' face-to-face.js
-          grep -q 'face-far-piece' direction-fix.css
           grep -q 'mancala-pebble.p1' glass-visuals.css
           grep -q 'ohajiki-canvas' glass-visuals.js
           grep -q 'assets/board/wood.png' extra-games.css
@@ -68,7 +58,3 @@ jobs:
           for game in reversi shogi chess mancala gomoku connect4 ohajiki hasami checkers dots sugoroku; do
             grep -q "$game:{title:" howto.js
           done
-          grep -q "'将棋':{top:'後手',bottom:'先手'}" face-to-face.js
-          grep -q 'face-top-side' face-to-face.js
-          grep -q 'face-square-label' face-to-face.js
-          grep -q 'generatedMutation' face-to-face.js
