@@ -1,0 +1,39 @@
+/* Mancala-specific responsive layout: keep the complete physical board visible. */
+.mancala-drop{animation:mancalaStoneDrop .22s cubic-bezier(.18,.8,.25,1.25)}
+@keyframes mancalaStoneDrop{0%{transform:translate(-50%,-115%) scale(.78);opacity:.15}68%{transform:translate(-50%,-43%) scale(1.08);opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
+body.mancala-sowing .mancala-board{pointer-events:none}
+
+@media (orientation:landscape) and (max-height:650px){
+  body.mancala-active{overflow:auto}
+  body.mancala-active .topbar{height:42px;padding:0 10px;position:relative}
+  body.mancala-active .brand{font-size:11px}
+  body.mancala-active .icon-btn{width:32px;height:32px;border-radius:9px}
+  body.mancala-active .game-screen{padding:4px 10px calc(8px + var(--safe-bottom));min-height:calc(100vh - 42px)}
+  body.mancala-active .game-shell{width:100%;max-width:none;min-height:calc(100vh - 52px);display:grid;grid-template-columns:minmax(100px,1fr) minmax(0,760px) minmax(100px,1fr);grid-template-rows:auto auto 1fr auto;column-gap:12px;align-items:center}
+  body.mancala-active .game-head{grid-column:1/4;grid-row:1;margin:0 4px 2px;align-items:center}
+  body.mancala-active .game-head h2{font-size:18px;margin:0}
+  body.mancala-active .game-head .eyebrow{font-size:9px}
+  body.mancala-active .turn-badge{padding:5px 9px;font-size:10px}
+  body.mancala-active .status{grid-column:1/4;grid-row:2;min-height:18px;font-size:11px;line-height:18px}
+  body.mancala-active .board-wrap{grid-column:2;grid-row:3;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:visible}
+  body.mancala-active .board.extra-board{width:100%;box-shadow:none;filter:none;display:flex;align-items:center;justify-content:center}
+  body.mancala-active .mancala-board{width:min(72vw,760px);max-height:52vh;grid-template-columns:clamp(52px,7vw,78px) repeat(6,minmax(48px,1fr)) clamp(52px,7vw,78px);grid-template-rows:repeat(2,minmax(58px,11vh));gap:clamp(4px,.8vw,8px);padding:clamp(7px,1.3vw,13px);border-width:7px;border-radius:30px;margin:auto}
+  body.mancala-active .mancala-pebble{width:24%}
+  body.mancala-active .store{border-radius:30px}
+  body.mancala-active .captured{display:none!important}
+  body.mancala-active .scorebar{position:static;grid-column:1;grid-row:3;max-width:none;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;font-size:11px;min-height:0}
+  body.mancala-active .scorebar strong{font-size:15px}
+  body.mancala-active .controls{position:static;grid-column:3;grid-row:3;width:auto;margin:0;display:grid;grid-template-columns:1fr;gap:6px;align-self:center}
+  body.mancala-active .controls button{padding:8px 9px;font-size:11px;border-radius:10px;white-space:nowrap}
+}
+
+@media (orientation:landscape) and (max-height:430px){
+  body.mancala-active .topbar{display:none}
+  body.mancala-active .game-screen{padding-top:2px;min-height:100vh}
+  body.mancala-active .game-shell{min-height:98vh;grid-template-columns:86px minmax(0,1fr) 92px;column-gap:7px}
+  body.mancala-active .game-head{margin:0}
+  body.mancala-active .game-head h2{font-size:15px}
+  body.mancala-active .status{font-size:10px;min-height:14px;line-height:14px}
+  body.mancala-active .mancala-board{width:min(75vw,720px);max-height:67vh;grid-template-columns:46px repeat(6,minmax(42px,1fr)) 46px;grid-template-rows:repeat(2,minmax(48px,14vh));padding:6px;gap:4px;border-width:5px;border-radius:24px}
+  body.mancala-active .controls button{font-size:10px;padding:6px 5px}
+}
