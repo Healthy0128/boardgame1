@@ -16,11 +16,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check JavaScript syntax
+      - name: Check JavaScript and installer syntax
         run: |
           node --check app.js
           node --check extra-games.js
           node --check rich-board.js
+          bash -n scripts/install-rich-board-assets.sh
       - name: Verify home entries and rich asset hooks
         run: |
           for game in mancala ohajiki gomoku connect4 sugoroku hasami checkers dots; do
