@@ -86,20 +86,10 @@ function syncSugoroku(){
 }
 function syncShogi(){
   const b=$('.shogi-board');if(!b)return;
-  const cells=[...b.children];
-  let whiteTop=0,blackTop=0,whiteBottom=0,blackBottom=0;
-  cells.forEach((cell,i)=>{
+  const br=b.getBoundingClientRect(),midY=br.top+br.height/2;
+  [...b.children].forEach(cell=>{
     const img=cell.querySelector('.shogi-piece');if(!img)return;
-    const isWhite=img.getAttribute('src')?.includes('/white_');
-    const isBlack=img.getAttribute('src')?.includes('/black_');
-    if(i<36){if(isWhite)whiteTop++;if(isBlack)blackTop++}
-    if(i>=45){if(isWhite)whiteBottom++;if(isBlack)blackBottom++}
-  });
-  const normalScore=whiteTop+blackBottom,rotatedScore=blackTop+whiteBottom;
-  const farIsWhite=normalScore>=rotatedScore;
-  b.querySelectorAll('.shogi-piece').forEach(img=>{
-    const isWhite=img.getAttribute('src')?.includes('/white_');
-    const far=farIsWhite?isWhite:!isWhite;
+    const r=cell.getBoundingClientRect(),far=(r.top+r.height/2)<midY;
     img.classList.toggle('face-far-piece',far);
     img.classList.toggle('face-near-piece',!far);
   });
