@@ -12,14 +12,6 @@ function sync(){
       markPiece(img,far);
     });
   }
-  if(t==='将棋'){
-    document.querySelectorAll('.shogi-board .shogi-piece').forEach(img=>{
-      const src=img.getAttribute('src')||'';
-      const isGote=src.includes('/white_');
-      const far=flipped?!isGote:isGote;
-      markPiece(img,far);
-    });
-  }
 }
 const screen=document.querySelector('#gameScreen');
 if(screen)new MutationObserver(()=>requestAnimationFrame(sync)).observe(screen,{subtree:true,childList:true,characterData:true});
