@@ -1,5 +1,5 @@
-const CACHE='board-table-v7';
-const CORE=['./','index.html','styles.css','extra-games.css','app.js','extra-games.js','rich-board.js','manifest.webmanifest','assets/board/wood.png','assets/board/go_black.png','assets/board/go_white.png'];
+const CACHE='board-table-v8';
+const CORE=['./','index.html','styles.css','extra-games.css','mancala-fix.css','app.js','extra-games.js','rich-board.js','manifest.webmanifest','assets/board/wood.png','assets/board/go_black.png','assets/board/go_white.png'];
 
 self.addEventListener('install',event=>{
   event.waitUntil((async()=>{
