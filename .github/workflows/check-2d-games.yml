@@ -9,6 +9,8 @@ on:
       - 'howto.css'
       - 'face-to-face.js'
       - 'face-to-face.css'
+      - 'glass-visuals.js'
+      - 'glass-visuals.css'
       - 'index.html'
       - 'sw.js'
       - 'scripts/install-rich-board-assets.sh'
@@ -27,6 +29,7 @@ jobs:
           node --check rich-board.js
           node --check howto.js
           node --check face-to-face.js
+          node --check glass-visuals.js
           bash -n scripts/install-rich-board-assets.sh
       - name: Verify home entries and rich asset hooks
         run: |
@@ -38,6 +41,10 @@ jobs:
           grep -q 'howto.css' index.html
           grep -q 'face-to-face.js' index.html
           grep -q 'face-to-face.css' index.html
+          grep -q 'glass-visuals.js' index.html
+          grep -q 'glass-visuals.css' index.html
+          grep -q 'mancala-pebble.p1' glass-visuals.css
+          grep -q 'ohajiki-canvas' glass-visuals.js
           grep -q 'assets/board/wood.png' extra-games.css
           grep -q 'assets/board/go_black.png' extra-games.css
           for game in reversi shogi chess mancala gomoku connect4 ohajiki hasami checkers dots sugoroku; do
