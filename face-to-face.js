@@ -84,17 +84,7 @@ function syncSugoroku(){
     sq.append(top,bottom);
   });
 }
-function syncShogi(){
-  const b=$('.shogi-board');if(!b)return;
-  const br=b.getBoundingClientRect(),midY=br.top+br.height/2;
-  [...b.children].forEach(cell=>{
-    const img=cell.querySelector('.shogi-piece');if(!img)return;
-    const r=cell.getBoundingClientRect(),far=(r.top+r.height/2)<midY;
-    img.classList.toggle('face-far-piece',far);
-    img.classList.toggle('face-near-piece',!far);
-  });
-}
-function sync(){if(syncing)return;syncing=true;scheduled=false;try{syncHud();syncMancala();syncSugoroku();syncShogi()}finally{syncing=false}}
+function sync(){if(syncing)return;syncing=true;scheduled=false;try{syncHud();syncMancala();syncSugoroku()}finally{syncing=false}}
 function schedule(){if(scheduled||syncing)return;scheduled=true;requestAnimationFrame(sync)}
 function generatedMutation(m){
   const node=m.target?.nodeType===1?m.target:m.target?.parentElement;

@@ -57,7 +57,9 @@ jobs:
           grep -q 'performance.now()-started<2000' sugoroku-effects.js
           grep -q 'renderDie' sugoroku-effects.js
           grep -q 'dieAlreadyCorrect' sugoroku-effects.js
-          grep -q 'getBoundingClientRect' direction-fix.js
+          grep -q "const isGote=src.includes('/white_')" direction-fix.js
+          ! grep -q 'getBoundingClientRect' direction-fix.js
+          ! grep -q 'function syncShogi' face-to-face.js
           grep -q 'face-far-piece' direction-fix.css
           grep -q 'mancala-pebble.p1' glass-visuals.css
           grep -q 'ohajiki-canvas' glass-visuals.js

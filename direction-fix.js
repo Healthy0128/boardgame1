@@ -2,16 +2,6 @@
 let flipped=false,lastTitle='';
 function title(){return document.querySelector('#gameTitle')?.textContent?.trim()||''}
 function markPiece(img,far){img.classList.toggle('face-far-piece',far);img.classList.toggle('face-near-piece',!far)}
-function syncShogiByScreenPosition(){
-  const board=document.querySelector('.shogi-board');if(!board)return;
-  const br=board.getBoundingClientRect(),midY=br.top+br.height/2;
-  [...board.children].forEach(cell=>{
-    const img=cell.querySelector('.shogi-piece');if(!img)return;
-    const r=cell.getBoundingClientRect();
-    const far=(r.top+r.height/2)<midY;
-    markPiece(img,far);
-  });
-}
 function sync(){
   const t=title();if(t!==lastTitle){flipped=false;lastTitle=t}
   document.body.classList.toggle('face-board-flipped',flipped);
@@ -22,7 +12,14 @@ function sync(){
       markPiece(img,far);
     });
   }
-  if(t==='将棋')syncShogiByScreenPosition();
+  if(t==='将棋'){
+    document.querySelectorAll('.shogi-board .shogi-piece').forEach(img=>{
+      const src=img.getAttribute('src')||'';
+      const isGote=src.includes('/white_');
+      const far=flipped?!isGote:isGote;
+      markPiece(img,far);
+    });
+  }
 }
 const screen=document.querySelector('#gameScreen');
 if(screen)new MutationObserver(()=>requestAnimationFrame(sync)).observe(screen,{subtree:true,childList:true,characterData:true});
