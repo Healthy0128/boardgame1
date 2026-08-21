@@ -4,8 +4,10 @@ on:
     paths:
       - 'extra-games.js'
       - 'extra-games.css'
+      - 'rich-board.js'
       - 'index.html'
       - 'sw.js'
+      - 'scripts/install-rich-board-assets.sh'
 jobs:
   syntax:
     runs-on: ubuntu-latest
@@ -14,12 +16,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check JavaScript syntax
+      - name: Check JavaScript and installer syntax
         run: |
           node --check app.js
           node --check extra-games.js
-      - name: Verify home entries
+          node --check rich-board.js
+          bash -n scripts/install-rich-board-assets.sh
+      - name: Verify home entries and rich asset hooks
         run: |
           for game in mancala ohajiki gomoku connect4 sugoroku hasami checkers dots; do
             grep -q "data-extra-game=\"$game\"" index.html
           done
+          grep -q 'rich-board.js' index.html
+          grep -q 'assets/board/wood.png' extra-games.css
+          grep -q 'assets/board/go_black.png' extra-games.css

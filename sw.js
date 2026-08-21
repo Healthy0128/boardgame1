@@ -1,5 +1,5 @@
-const CACHE='board-table-v6';
-const CORE=['./','index.html','styles.css','extra-games.css','app.js','extra-games.js','manifest.webmanifest'];
+const CACHE='board-table-v7';
+const CORE=['./','index.html','styles.css','extra-games.css','app.js','extra-games.js','rich-board.js','manifest.webmanifest','assets/board/wood.png','assets/board/go_black.png','assets/board/go_white.png'];
 
 self.addEventListener('install',event=>{
   event.waitUntil((async()=>{
@@ -20,10 +20,6 @@ self.addEventListener('activate',event=>{
 self.addEventListener('fetch',event=>{
   const req=event.request;
   if(req.method!=='GET')return;
-
-  // Always prefer the network for page navigations so a newly deployed
-  // BOARD TABLE becomes visible immediately. Fall back to the cached shell
-  // only when offline.
   if(req.mode==='navigate'){
     event.respondWith((async()=>{
       try{
@@ -37,9 +33,6 @@ self.addEventListener('fetch',event=>{
     })());
     return;
   }
-
-  // Scripts/styles also refresh in the background. Assets such as images and
-  // audio remain fast from cache after their first successful request.
   const url=new URL(req.url);
   const isCode=/\.(?:js|css|webmanifest)$/.test(url.pathname);
   if(isCode){
@@ -55,7 +48,6 @@ self.addEventListener('fetch',event=>{
     })());
     return;
   }
-
   event.respondWith((async()=>{
     const cache=await caches.open(CACHE);
     const cached=await cache.match(req);

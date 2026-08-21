@@ -1,33 +1,72 @@
-/* Extra 2D game collection */
-.extra-art{font-size:60px;gap:10px;background:linear-gradient(145deg,#24303c,#10151b)}
-.mancala-art{background:linear-gradient(145deg,#bd7b39,#613a1d)}
-.ohajiki-art{background:radial-gradient(circle,#4b8eb8,#153248)}
-.gomoku-art{background:linear-gradient(145deg,#d5a55c,#805126)}
-.connect4-art{background:linear-gradient(145deg,#235ad1,#122a6d)}
-.sugoroku-art{background:linear-gradient(145deg,#e5a848,#73451d)}
-.hasami-art{background:linear-gradient(145deg,#c9954c,#6f451f)}
+/* Rich tabletop treatment for the extra 2D game collection */
+.extra-art{font-size:56px;gap:10px;background:linear-gradient(145deg,#28323c,#10151b);text-shadow:0 5px 14px rgba(0,0,0,.35)}
+.mancala-art,.gomoku-art,.hasami-art,.sugoroku-art{background:linear-gradient(rgba(105,58,23,.16),rgba(54,28,10,.4)),url('assets/board/wood.png') center/cover}
+.ohajiki-art{background:radial-gradient(circle at 45% 35%,#bfefff,#4d8db6 58%,#153248)}
+.connect4-art{background:linear-gradient(145deg,#2f79ee,#0b2f83)}
 .checkers-art{background:linear-gradient(135deg,#d3c1a4 50%,#694934 50%)}
-.dots-art{background:radial-gradient(circle,#495566,#1e242d)}
-.board.extra-board{box-shadow:0 20px 50px rgba(0,0,0,.45)}
-.extra-grid{display:grid;width:min(94vw,610px);aspect-ratio:1;border-radius:8px;overflow:hidden}
-.gomoku-grid,.hasami-grid{grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);background:#d8a75e;border:8px solid #6f431f}
-.gomoku-grid .xcell,.hasami-grid .xcell{border-right:1px solid #4e311b;border-bottom:1px solid #4e311b}
+.dots-art{background:linear-gradient(145deg,#f5f0e4,#bca47b)}
+.board.extra-board{box-shadow:0 24px 60px rgba(0,0,0,.5);filter:drop-shadow(0 2px 0 rgba(255,255,255,.03))}
+.extra-grid{display:grid;width:min(94vw,610px);aspect-ratio:1;border-radius:12px;overflow:hidden}
 .xcell{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;cursor:pointer}
-.xstone{width:76%;height:76%;border-radius:50%;box-shadow:0 4px 7px rgba(0,0,0,.32)}
-.xstone.p1{background:radial-gradient(circle at 35% 28%,#555,#08090a 65%)}
-.xstone.p2{background:radial-gradient(circle at 35% 28%,#fff,#d9dde2 67%)}
-.xstone.red{background:radial-gradient(circle at 35% 28%,#ff8272,#a70f0f 68%)}
-.xstone.yellow{background:radial-gradient(circle at 35% 28%,#fff5a2,#e1ab0a 68%)}
-.connect4-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(6,1fr);width:min(94vw,610px);aspect-ratio:7/6;background:#1760d0;border:10px solid #0f3e8c;border-radius:18px;padding:8px;gap:6px}
-.connect4-grid .xcell{border-radius:50%;background:#e6ecf1;box-shadow:inset 0 4px 9px rgba(0,0,0,.25)}
-.connect4-grid .xstone{width:90%;height:90%}
-.mancala-board{width:min(96vw,720px);display:grid;grid-template-columns:90px repeat(6,1fr) 90px;grid-template-rows:repeat(2,100px);gap:9px;padding:16px;background:linear-gradient(#b77635,#70421e);border:8px solid #4d2c16;border-radius:40px;box-shadow:inset 0 10px 24px rgba(255,255,255,.16),0 20px 50px rgba(0,0,0,.45)}
-.pit,.store{border:0;border-radius:50%;background:radial-gradient(circle at 50% 60%,#573116,#754a25 50%,#9c652f 72%);color:#fff;font-size:23px;font-weight:900;box-shadow:inset 0 8px 18px rgba(0,0,0,.45);cursor:pointer}
-.store{grid-row:1/3;border-radius:38px;font-size:30px}.store.left{grid-column:1}.store.right{grid-column:8}
-.pit:disabled,.store:disabled{opacity:.72;cursor:default}.pit.active{outline:4px solid #ffd166;outline-offset:2px}
-.sugoroku-board{width:min(96vw,720px);display:grid;grid-template-columns:repeat(6,1fr);gap:7px;padding:12px;background:#202630;border-radius:18px}
-.sq{min-height:74px;background:#e9edf1;color:#17202b;border-radius:13px;padding:7px;font-size:11px;font-weight:800;display:flex;flex-direction:column;justify-content:space-between}.sq.special{background:#ffe19b}.tokens{display:flex;gap:4px}.token{width:22px;height:22px;border-radius:50%;border:2px solid #fff}.token.p1{background:#e94f4f}.token.p2{background:#397be7}.dice-panel{display:flex;gap:12px;justify-content:center;align-items:center;margin:12px}.dice{font-size:34px;background:#fff;color:#111;border-radius:14px;padding:8px 15px;font-weight:900}
-.checkers-grid{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:min(94vw,610px);aspect-ratio:1;border:8px solid #3d2c22;border-radius:8px;overflow:hidden}.checkers-grid .xcell.light{background:#d9c5a6}.checkers-grid .xcell.dark{background:#674936}.checker{width:72%;height:72%;border-radius:50%;box-shadow:inset 0 5px 7px rgba(255,255,255,.2),0 5px 8px rgba(0,0,0,.35)}.checker.p1{background:#d64242}.checker.p2{background:#222}.checker.king:after{content:'★';color:#ffd166;font-size:55%;display:grid;place-items:center;height:100%}.xcell.sel{box-shadow:inset 0 0 0 4px #ffd166}.xcell.hint:after{content:'';width:24%;height:24%;border-radius:50%;background:#ffd166;position:absolute}
-.dots-board{width:min(94vw,610px);aspect-ratio:1;display:grid;grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);background:#f2f4f7;border-radius:14px;padding:12px}.dot{width:12px;height:12px;border-radius:50%;background:#26313f;justify-self:center;align-self:center}.edge{align-self:stretch;justify-self:stretch;cursor:pointer;border-radius:8px}.edge.h{height:10px;align-self:center}.edge.v{width:10px;justify-self:center}.edge:hover{background:#ffd16655}.edge.p1{background:#e84d4d}.edge.p2{background:#397be7}.box{margin:3px;border-radius:8px}.box.p1{background:#e84d4d55}.box.p2{background:#397be755}
-.ohajiki-wrap{width:min(96vw,720px);position:relative}.ohajiki-canvas{width:100%;aspect-ratio:4/3;border-radius:22px;background:radial-gradient(circle,#d9f2ff,#7db3cf);border:8px solid #315e78;touch-action:none;display:block}.ohajiki-help{text-align:center;color:var(--muted);font-size:12px;margin-top:8px}
-@media(max-width:760px){.mancala-board{grid-template-columns:58px repeat(6,1fr) 58px;grid-template-rows:repeat(2,72px);gap:5px;padding:9px;border-radius:26px}.pit{font-size:17px}.store{font-size:23px}.sq{min-height:58px;padding:5px}.sugoroku-board{gap:4px;padding:7px}.extra-art{font-size:44px}}
+
+/* Shared wood boards */
+.gomoku-grid,.hasami-grid{grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);background:linear-gradient(rgba(226,167,84,.18),rgba(108,62,26,.1)),url('assets/board/wood.png') center/cover;border:12px solid #4b2d16;box-shadow:inset 0 0 0 2px #d9a45e,inset 0 9px 16px rgba(255,225,175,.18),0 18px 42px rgba(0,0,0,.4)}
+.gomoku-grid .xcell,.hasami-grid .xcell{border-right:1px solid rgba(56,31,14,.72);border-bottom:1px solid rgba(56,31,14,.72)}
+.gomoku-grid .xcell:before,.hasami-grid .xcell:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(255,255,255,.055),transparent 66%);pointer-events:none}
+
+/* Real rendered Go stones */
+.xstone{width:82%;height:82%;border-radius:50%;background-repeat:no-repeat;background-position:center;background-size:contain;filter:drop-shadow(0 5px 5px rgba(0,0,0,.34));transition:transform .12s ease}
+.xstone.p1{background-image:url('assets/board/go_black.png');background-color:transparent}
+.xstone.p2{background-image:url('assets/board/go_white.png');background-color:transparent}
+.gomoku-grid .xstone{width:88%;height:88%}
+.hasami-grid .xstone{width:80%;height:80%}
+.xstone.red,.xstone.yellow{background-image:none;box-shadow:inset 0 7px 10px rgba(255,255,255,.28),inset 0 -9px 15px rgba(0,0,0,.22),0 6px 8px rgba(0,0,0,.33);border:1px solid rgba(0,0,0,.16)}
+.xstone.red{background:radial-gradient(circle at 35% 25%,#ff9589 0 12%,#ed493c 35%,#a91218 76%,#74080d 100%)}
+.xstone.yellow{background:radial-gradient(circle at 35% 25%,#fff8bc 0 12%,#ffd84c 34%,#d7a50b 77%,#9a7100 100%)}
+
+/* Mancala: carved wood + visible marbles */
+.mancala-board{width:min(96vw,760px);display:grid;grid-template-columns:92px repeat(6,1fr) 92px;grid-template-rows:repeat(2,108px);gap:10px;padding:20px;background:linear-gradient(rgba(162,92,38,.1),rgba(62,30,10,.26)),url('assets/board/wood.png') center/cover;border:10px solid #4b2912;border-radius:44px;box-shadow:inset 0 2px 0 rgba(255,229,185,.42),inset 0 -12px 24px rgba(49,21,7,.4),0 24px 54px rgba(0,0,0,.48)}
+.pit,.store{position:relative;overflow:hidden;border:0;border-radius:50%;background:radial-gradient(ellipse at 48% 58%,#331b0d 0 28%,#5f3418 48%,#8f582a 67%,#ad7138 80%,#5e3116 100%);color:#fff;box-shadow:inset 0 13px 19px rgba(0,0,0,.57),inset 0 -3px 4px rgba(255,208,139,.18),0 1px 0 rgba(255,232,190,.32);cursor:pointer}
+.store{grid-row:1/3;border-radius:42px}.store.left{grid-column:1}.store.right{grid-column:8}
+.pit:disabled,.store:disabled{opacity:.9;cursor:default}.pit.active{outline:4px solid #ffd166;outline-offset:3px;filter:brightness(1.08)}
+.mancala-pebbles{position:absolute;inset:7%;pointer-events:none}.mancala-pebble{position:absolute;width:23%;aspect-ratio:1;border-radius:48% 52% 46% 54%;transform:translate(-50%,-50%) rotate(var(--r));box-shadow:inset 3px 4px 6px rgba(255,255,255,.42),inset -4px -5px 7px rgba(0,0,0,.27),0 3px 4px rgba(0,0,0,.38)}
+.mancala-pebble.p1{background:radial-gradient(circle at 32% 26%,#fff4b1,#d6a736 40%,#785415 100%)}
+.mancala-pebble.p2{background:radial-gradient(circle at 32% 26%,#d7fbff,#4fbdca 44%,#1f6876 100%)}
+.mancala-pebble.p3{background:radial-gradient(circle at 32% 26%,#ffd8ce,#d96754 43%,#7a251c 100%)}
+.mancala-pebble.p4{background:radial-gradient(circle at 32% 26%,#e7dcff,#8060bd 43%,#3c286c 100%)}
+.pit-count{position:absolute;right:8px;bottom:6px;min-width:24px;height:24px;padding:0 6px;display:grid;place-items:center;border-radius:999px;background:rgba(8,8,8,.62);color:#fff;font-size:12px;font-weight:900;border:1px solid rgba(255,255,255,.2);z-index:4}
+.store .pit-count{right:50%;bottom:7px;transform:translateX(50%);font-size:13px}
+
+/* Connect 4: molded glossy frame */
+.connect4-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(6,1fr);width:min(94vw,610px);aspect-ratio:7/6;background:linear-gradient(145deg,#327cff,#0f4bbd 60%,#083585);border:13px solid #092c6c;border-radius:24px;padding:10px;gap:7px;box-shadow:inset 0 5px 0 rgba(255,255,255,.2),inset 0 -8px 12px rgba(0,0,0,.25),0 20px 44px rgba(0,0,0,.45)}
+.connect4-grid .xcell{border-radius:50%;background:radial-gradient(circle at 50% 44%,#dfe8eb 0 54%,#aebbc2 68%,#778790 75%,#dfe8eb 82%);box-shadow:inset 0 7px 11px rgba(0,0,0,.35),0 1px 0 rgba(255,255,255,.22)}
+.connect4-grid .xstone{width:91%;height:91%;animation:discDrop .18s cubic-bezier(.2,.85,.25,1.2)}
+@keyframes discDrop{from{transform:translateY(-42%) scale(.88);opacity:.3}to{transform:none;opacity:1}}
+
+/* Sugoroku: physical board + real-looking die */
+.sugoroku-board{width:min(96vw,740px);display:grid;grid-template-columns:repeat(6,1fr);gap:7px;padding:14px;background:linear-gradient(rgba(90,46,16,.16),rgba(90,46,16,.16)),url('assets/board/wood.png') center/cover;border:8px solid #4c2b15;border-radius:22px;box-shadow:inset 0 2px 0 rgba(255,255,255,.3),0 18px 42px rgba(0,0,0,.4)}
+.sq{min-height:76px;background:linear-gradient(145deg,#fffdf8,#e5ded2);color:#17202b;border-radius:10px;padding:7px;font-size:11px;font-weight:850;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(84,57,35,.25);box-shadow:0 2px 4px rgba(0,0,0,.18)}
+.sq.special{background:linear-gradient(145deg,#ffeab4,#eab64c)}
+.tokens{display:flex;gap:4px}.token{width:24px;height:24px;border-radius:50% 50% 45% 45%;border:2px solid #fff;box-shadow:inset 0 5px 5px rgba(255,255,255,.28),0 4px 5px rgba(0,0,0,.28)}.token.p1{background:#d63f42}.token.p2{background:#356bd3}
+.dice-panel{display:flex;gap:14px;justify-content:center;align-items:center;margin:14px}.dice{width:66px;height:66px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:3px;padding:10px;background:linear-gradient(145deg,#fff,#d9d9d9);border:1px solid #aaa;border-radius:14px;box-shadow:inset 0 3px 5px #fff,0 9px 14px rgba(0,0,0,.3);transform:rotate(-3deg)}.pip{display:grid;place-items:center}.pip.on:after{content:'';width:10px;height:10px;border-radius:50%;background:#151515;box-shadow:inset 1px 1px 1px #000}
+.dice-panel button{border:1px solid rgba(255,255,255,.12);background:#242a31;border-radius:14px;padding:13px 18px;font-weight:850}
+
+/* Checkers: thick ridged pieces */
+.checkers-grid{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:min(94vw,610px);aspect-ratio:1;border:12px solid #402718;border-radius:13px;overflow:hidden;box-shadow:inset 0 0 0 2px #b47843,0 22px 50px rgba(0,0,0,.44)}
+.checkers-grid .xcell.light{background:#d8c2a0}.checkers-grid .xcell.dark{background:#6b4430}
+.checker{position:relative;width:74%;height:74%;border-radius:50%;box-shadow:inset 0 7px 7px rgba(255,255,255,.2),inset 0 -9px 12px rgba(0,0,0,.28),0 7px 9px rgba(0,0,0,.38);border:2px solid rgba(0,0,0,.22)}
+.checker:before{content:'';position:absolute;inset:16%;border-radius:50%;border:3px double rgba(255,255,255,.24);box-shadow:0 0 0 2px rgba(0,0,0,.14)}
+.checker.p1{background:radial-gradient(circle at 36% 28%,#f2786d,#c83232 58%,#751719)}.checker.p2{background:radial-gradient(circle at 36% 28%,#5e6267,#202225 58%,#08090a)}
+.checker.king:after{content:'★';position:absolute;inset:0;color:#ffd166;font-size:54%;display:grid;place-items:center;text-shadow:0 2px 2px rgba(0,0,0,.5)}
+
+.xcell.sel{box-shadow:inset 0 0 0 4px #ffd166}.xcell.hint:after{content:'';width:24%;height:24%;border-radius:50%;background:#ffd166;position:absolute;box-shadow:0 0 12px #ffd166}
+
+/* Dots & Boxes: paper laid on a wooden tabletop */
+.dots-board{width:min(94vw,610px);aspect-ratio:1;display:grid;grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);background:linear-gradient(rgba(252,249,239,.96),rgba(243,235,217,.96)),url('assets/board/wood.png');border:10px solid #77502d;border-radius:16px;padding:14px;box-shadow:0 18px 44px rgba(0,0,0,.42)}
+.dot{width:12px;height:12px;border-radius:50%;background:#3d332b;justify-self:center;align-self:center;box-shadow:0 2px 2px rgba(0,0,0,.2)}
+.edge{align-self:stretch;justify-self:stretch;cursor:pointer;border-radius:8px}.edge.h{height:10px;align-self:center}.edge.v{width:10px;justify-self:center}.edge:hover{background:#ffd16655}.edge.p1{background:#c94848}.edge.p2{background:#396ec2}.box{margin:3px;border-radius:6px}.box.p1{background:#d35a4a45}.box.p2{background:#4c7cca45}
+
+/* Ohajiki: glass table feeling */
+.ohajiki-wrap{width:min(96vw,720px);position:relative}.ohajiki-canvas{width:100%;aspect-ratio:4/3;border-radius:24px;background:radial-gradient(circle at 38% 30%,rgba(235,252,255,.98),rgba(130,198,226,.86) 48%,rgba(65,128,163,.95));border:10px solid #315e78;box-shadow:inset 0 0 34px rgba(255,255,255,.5),0 20px 48px rgba(0,0,0,.43);touch-action:none;display:block}.ohajiki-help{text-align:center;color:var(--muted);font-size:12px;margin-top:8px}
+
+@media(max-width:760px){.mancala-board{grid-template-columns:58px repeat(6,1fr) 58px;grid-template-rows:repeat(2,76px);gap:5px;padding:10px;border-width:7px;border-radius:28px}.mancala-pebble{width:27%}.store{border-radius:28px}.sq{min-height:58px;padding:5px}.sugoroku-board{gap:4px;padding:8px}.extra-art{font-size:43px}.dice{width:58px;height:58px;padding:9px}.pip.on:after{width:8px;height:8px}}
