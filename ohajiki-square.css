@@ -1,0 +1,6 @@
+/* Ohajiki square stage and centered pass-and-play layout */
+.board.extra-board:has(.ohajiki-wrap){width:100%;display:flex;justify-content:center;align-items:center;box-shadow:none;filter:none}
+.ohajiki-wrap{width:min(88vw,620px);margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ohajiki-canvas{display:block;width:100%;height:auto;aspect-ratio:1/1;box-sizing:border-box;margin:0 auto;border-radius:24px}
+.ohajiki-help{width:100%;text-align:center}
+@media(max-width:760px){.ohajiki-wrap{width:min(90vw,560px)}}

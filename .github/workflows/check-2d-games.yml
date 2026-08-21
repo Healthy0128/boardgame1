@@ -4,6 +4,7 @@ on:
     paths:
       - 'extra-games.js'
       - 'extra-games.css'
+      - 'ohajiki-square.css'
       - 'rich-board.js'
       - 'howto.js'
       - 'howto.css'
@@ -62,7 +63,13 @@ jobs:
           ! grep -q 'getBoundingClientRect' direction-fix.js
           ! grep -q 'function syncShogi' face-to-face.js
           grep -q 'ohajiki-elimination-fix.js' index.html
-          grep -q 'q.x>=0&&q.x<=640&&q.y>=0&&q.y<=480' ohajiki-elimination-fix.js
+          grep -q 'ohajiki-square.css' index.html
+          grep -q 'const SIZE=560' ohajiki-elimination-fix.js
+          grep -q 'const START_X=140' ohajiki-elimination-fix.js
+          grep -q 'setPointerCapture' ohajiki-elimination-fix.js
+          grep -q 'q.x>=0&&q.x<=SIZE&&q.y>=0&&q.y<=SIZE' ohajiki-elimination-fix.js
+          grep -q 'aspect-ratio:1/1' ohajiki-square.css
+          grep -q 'margin:0 auto' ohajiki-square.css
           grep -q 'P1 残り' ohajiki-elimination-fix.js
           grep -q 'remaining(1)' ohajiki-elimination-fix.js
           grep -q 'remaining(2)' ohajiki-elimination-fix.js
