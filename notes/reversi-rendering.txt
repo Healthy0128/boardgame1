@@ -1,1 +1,0 @@
-Incremental Reversi rendering work branch.
