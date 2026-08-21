@@ -5,6 +5,8 @@ on:
       - 'extra-games.js'
       - 'extra-games.css'
       - 'rich-board.js'
+      - 'howto.js'
+      - 'howto.css'
       - 'index.html'
       - 'sw.js'
       - 'scripts/install-rich-board-assets.sh'
@@ -21,6 +23,7 @@ jobs:
           node --check app.js
           node --check extra-games.js
           node --check rich-board.js
+          node --check howto.js
           bash -n scripts/install-rich-board-assets.sh
       - name: Verify home entries and rich asset hooks
         run: |
@@ -28,5 +31,10 @@ jobs:
             grep -q "data-extra-game=\"$game\"" index.html
           done
           grep -q 'rich-board.js' index.html
+          grep -q 'howto.js' index.html
+          grep -q 'howto.css' index.html
           grep -q 'assets/board/wood.png' extra-games.css
           grep -q 'assets/board/go_black.png' extra-games.css
+          for game in reversi shogi chess mancala gomoku connect4 ohajiki hasami checkers dots sugoroku; do
+            grep -q "$game:{title:" howto.js
+          done
