@@ -3,27 +3,30 @@ body.face-to-face .game-head,
 body.face-to-face #status,
 body.face-to-face #score{display:none!important}
 body.face-to-face .game-shell{display:flex;flex-direction:column;align-items:stretch}
-body.face-to-face .face-hud{width:min(96vw,760px);margin:6px auto;padding:8px 10px;border:1px solid rgba(255,255,255,.11);border-radius:14px;background:rgba(22,27,33,.94);box-shadow:0 8px 24px rgba(0,0,0,.24);display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;min-height:44px}
+body.face-to-face .face-hud{width:min(96vw,760px);margin:6px auto;padding:8px 10px;border:1px solid rgba(255,255,255,.11);border-radius:14px;background:rgba(22,27,33,.94);box-shadow:0 8px 24px rgba(0,0,0,.24);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;min-height:44px;position:relative;z-index:2;pointer-events:auto;transform-origin:center}
 body.face-to-face .face-hud.top{transform:rotate(180deg)}
 body.face-to-face .face-player{font-weight:900;font-size:12px;white-space:nowrap}
-body.face-to-face .face-main{min-width:0;text-align:center;line-height:1.2}
+body.face-to-face .face-main{min-width:0;text-align:center;line-height:1.2;overflow:hidden}
 body.face-to-face .face-title{font-size:11px;color:var(--muted);letter-spacing:.08em}
-body.face-to-face .face-turn{font-size:13px;font-weight:900;margin-top:2px}
+body.face-to-face .face-turn{font-size:13px;font-weight:900;margin-top:2px;white-space:nowrap}
 body.face-to-face .face-meta{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
 body.face-to-face .face-hud.active{border-color:rgba(255,209,102,.66);box-shadow:0 0 0 2px rgba(255,209,102,.12),0 8px 24px rgba(0,0,0,.24)}
 body.face-to-face .face-hud.active .face-player{color:var(--accent)}
-body.face-to-face .face-mini-actions{display:flex;gap:4px}
-body.face-to-face .face-mini-actions button{border:1px solid rgba(255,255,255,.12);background:#242a31;border-radius:9px;padding:6px 8px;font-size:11px;font-weight:850;min-width:34px;cursor:pointer}
+body.face-to-face .face-mini-actions{display:flex;gap:4px;position:relative;z-index:3}
+body.face-to-face .face-mini-actions button{border:1px solid rgba(255,255,255,.12);background:#242a31;border-radius:9px;padding:6px 8px;font-size:11px;font-weight:850;min-width:34px;cursor:pointer;touch-action:manipulation}
 body.face-to-face .face-mini-actions button.danger{color:#ff9b9b}
-body.face-to-face .face-primary{border:0;background:var(--accent);color:#111;border-radius:9px;padding:6px 8px;font-size:11px;font-weight:900;cursor:pointer}
-body.face-to-face .controls{width:min(96vw,760px);margin:7px auto 0}
+body.face-to-face .controls{width:min(96vw,760px);margin:7px auto 0;position:relative;z-index:2}
+body.face-to-face .board-wrap{position:relative;z-index:1;pointer-events:auto}
+body.face-to-face .board,body.face-to-face .cell,body.face-to-face .pit,body.face-to-face .store,body.face-to-face .xcell,body.face-to-face .edge,body.face-to-face .ohajiki-canvas{pointer-events:auto}
 
 /* The far-side captured hand is physically read from the opposite edge. */
 body.face-to-face .captured-top{transform:rotate(180deg)}
 body.face-to-face .captured-bottom{transform:none}
 
-/* Shogi is directional: the far-side player's pieces face that player. */
-body.face-to-face .shogi-board .shogi-piece[src*="white_"]{transform:rotate(180deg)}
+/* Shogi is directional. Classes are assigned from the rendered board order,
+   so the far player's pieces stay readable even after rotating the board. */
+body.face-to-face .shogi-board .shogi-piece.face-far-piece{transform:rotate(180deg)!important;transform-origin:center}
+body.face-to-face .shogi-board .shogi-piece.face-near-piece{transform:none!important}
 
 /* Mancala: top-row pits and the top player's store count face the far player. */
 body.face-to-face .mancala-board .pit.face-top-side .pit-count{transform:rotate(180deg)}
@@ -44,7 +47,7 @@ body.face-to-face .sq>.face-original-label{visibility:hidden}
  body.face-to-face .face-title{font-size:9px}
  body.face-to-face .face-turn{font-size:11px}
  body.face-to-face .face-meta{font-size:8px}
- body.face-to-face .face-mini-actions button,body.face-to-face .face-primary{padding:5px 6px;font-size:10px}
+ body.face-to-face .face-mini-actions button{padding:5px 6px;font-size:10px}
 }
 @media(orientation:landscape) and (max-height:650px){
  body.face-to-face .face-hud{width:min(70vw,760px);min-height:32px;margin:2px auto;padding:4px 7px}
