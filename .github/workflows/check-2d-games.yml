@@ -53,3 +53,5 @@ jobs:
           grep -q "'将棋':{top:'後手',bottom:'先手'}" face-to-face.js
           grep -q 'face-top-side' face-to-face.js
           grep -q 'face-square-label' face-to-face.js
+          grep -q 'generatedMutation' face-to-face.js
+          grep -q 'face-far-piece' face-to-face.css
