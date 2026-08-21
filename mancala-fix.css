@@ -9,17 +9,33 @@ body.mancala-sowing .mancala-board{pointer-events:none}
   body.mancala-active .brand{font-size:11px}
   body.mancala-active .icon-btn{width:32px;height:32px;border-radius:9px}
   body.mancala-active .game-screen{padding:4px 10px calc(8px + var(--safe-bottom));min-height:calc(100vh - 42px)}
-  body.mancala-active .game-shell{width:100%;max-width:none;min-height:calc(100vh - 52px);display:grid;grid-template-columns:minmax(100px,1fr) minmax(0,760px) minmax(100px,1fr);grid-template-rows:auto auto 1fr auto;column-gap:12px;align-items:center}
+  body.mancala-active .game-shell{width:100%;max-width:none;min-height:calc(100vh - 52px);display:grid;grid-template-columns:minmax(92px,1fr) auto minmax(92px,1fr);grid-template-rows:auto auto 1fr;column-gap:12px;align-items:center}
   body.mancala-active .game-head{grid-column:1/4;grid-row:1;margin:0 4px 2px;align-items:center}
   body.mancala-active .game-head h2{font-size:18px;margin:0}
   body.mancala-active .game-head .eyebrow{font-size:9px}
   body.mancala-active .turn-badge{padding:5px 9px;font-size:10px}
   body.mancala-active .status{grid-column:1/4;grid-row:2;min-height:18px;font-size:11px;line-height:18px}
-  body.mancala-active .board-wrap{grid-column:2;grid-row:3;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:visible}
-  body.mancala-active .board.extra-board{width:100%;box-shadow:none;filter:none;display:flex;align-items:center;justify-content:center}
-  body.mancala-active .mancala-board{width:min(72vw,760px);max-height:52vh;grid-template-columns:clamp(52px,7vw,78px) repeat(6,minmax(48px,1fr)) clamp(52px,7vw,78px);grid-template-rows:repeat(2,minmax(58px,11vh));gap:clamp(4px,.8vw,8px);padding:clamp(7px,1.3vw,13px);border-width:7px;border-radius:30px;margin:auto}
+  body.mancala-active .board-wrap{grid-column:2;grid-row:3;width:auto;height:auto;display:flex;align-items:center;justify-content:center;overflow:visible}
+  body.mancala-active .board.extra-board{width:auto;box-shadow:none;filter:none;display:flex;align-items:center;justify-content:center}
+
+  /* Size from the available height first, so circular pits stay circular. */
+  body.mancala-active .mancala-board{
+    --pit:clamp(58px,13.2vh,82px);
+    --gap:clamp(4px,1.05vh,8px);
+    --store:clamp(50px,10.5vh,72px);
+    width:auto;
+    max-width:76vw;
+    grid-template-columns:var(--store) repeat(6,var(--pit)) var(--store);
+    grid-template-rows:repeat(2,var(--pit));
+    gap:var(--gap);
+    padding:clamp(7px,1.4vh,12px);
+    border-width:7px;
+    border-radius:30px;
+    margin:auto;
+  }
+  body.mancala-active .pit{aspect-ratio:1/1;min-width:0;min-height:0}
+  body.mancala-active .store{border-radius:30px;min-width:0;min-height:0}
   body.mancala-active .mancala-pebble{width:24%}
-  body.mancala-active .store{border-radius:30px}
   body.mancala-active .captured{display:none!important}
   body.mancala-active .scorebar{position:static;grid-column:1;grid-row:3;max-width:none;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;font-size:11px;min-height:0}
   body.mancala-active .scorebar strong{font-size:15px}
@@ -30,10 +46,19 @@ body.mancala-sowing .mancala-board{pointer-events:none}
 @media (orientation:landscape) and (max-height:430px){
   body.mancala-active .topbar{display:none}
   body.mancala-active .game-screen{padding-top:2px;min-height:100vh}
-  body.mancala-active .game-shell{min-height:98vh;grid-template-columns:86px minmax(0,1fr) 92px;column-gap:7px}
+  body.mancala-active .game-shell{min-height:98vh;grid-template-columns:80px auto 88px;column-gap:7px}
   body.mancala-active .game-head{margin:0}
   body.mancala-active .game-head h2{font-size:15px}
   body.mancala-active .status{font-size:10px;min-height:14px;line-height:14px}
-  body.mancala-active .mancala-board{width:min(75vw,720px);max-height:67vh;grid-template-columns:46px repeat(6,minmax(42px,1fr)) 46px;grid-template-rows:repeat(2,minmax(48px,14vh));padding:6px;gap:4px;border-width:5px;border-radius:24px}
+  body.mancala-active .mancala-board{
+    --pit:clamp(47px,14.5vh,61px);
+    --gap:4px;
+    --store:clamp(42px,11.5vh,52px);
+    max-width:78vw;
+    padding:5px;
+    border-width:5px;
+    border-radius:24px;
+  }
+  body.mancala-active .store{border-radius:24px}
   body.mancala-active .controls button{font-size:10px;padding:6px 5px}
 }
