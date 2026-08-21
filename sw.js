@@ -1,4 +1,4 @@
-const CACHE='board-table-v8';
+const CACHE='board-table-v9';
 const CORE=['./','index.html','styles.css','extra-games.css','mancala-fix.css','app.js','extra-games.js','rich-board.js','manifest.webmanifest','assets/board/wood.png','assets/board/go_black.png','assets/board/go_white.png'];
 
 self.addEventListener('install',event=>{
