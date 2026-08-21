@@ -1,0 +1,25 @@
+name: Install rich board assets
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/install-rich-board-assets.sh'
+      - '.github/workflows/install-rich-board-assets.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download selected CC0 board visuals
+        run: bash scripts/install-rich-board-assets.sh
+      - name: Commit local board assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/board
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Bundle rich CC0 board visuals'
+          git push
