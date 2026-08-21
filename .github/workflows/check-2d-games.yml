@@ -15,6 +15,7 @@ on:
       - 'direction-fix.css'
       - 'shogi-face-fix.css'
       - 'shogi-single-source.js'
+      - 'ohajiki-elimination-fix.js'
       - 'sugoroku-core-fix.js'
       - 'sugoroku-effects.js'
       - 'sugoroku-effects.css'
@@ -39,6 +40,7 @@ jobs:
           node --check glass-visuals.js
           node --check direction-fix.js
           node --check shogi-single-source.js
+          node --check ohajiki-elimination-fix.js
           node --check sugoroku-core-fix.js
           node --check sugoroku-effects.js
           bash -n scripts/install-rich-board-assets.sh
@@ -59,6 +61,11 @@ jobs:
           ! grep -q "if(t==='将棋')" direction-fix.js
           ! grep -q 'getBoundingClientRect' direction-fix.js
           ! grep -q 'function syncShogi' face-to-face.js
+          grep -q 'ohajiki-elimination-fix.js' index.html
+          grep -q 'q.x>=0&&q.x<=640&&q.y>=0&&q.y<=480' ohajiki-elimination-fix.js
+          grep -q 'P1 残り' ohajiki-elimination-fix.js
+          grep -q 'remaining(1)' ohajiki-elimination-fix.js
+          grep -q 'remaining(2)' ohajiki-elimination-fix.js
           grep -q 'mancala-pebble.p1' glass-visuals.css
           grep -q 'ohajiki-canvas' glass-visuals.js
           grep -q 'assets/board/wood.png' extra-games.css
