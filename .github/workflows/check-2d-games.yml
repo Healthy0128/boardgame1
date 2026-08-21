@@ -13,6 +13,7 @@ on:
       - 'glass-visuals.css'
       - 'direction-fix.js'
       - 'direction-fix.css'
+      - 'shogi-face-fix.css'
       - 'sugoroku-core-fix.js'
       - 'sugoroku-effects.js'
       - 'sugoroku-effects.css'
@@ -48,7 +49,10 @@ jobs:
           grep -q 'performance.now()-started<2000' sugoroku-core-fix.js
           grep -q 'async function stepTo' sugoroku-core-fix.js
           grep -q 'session.pos\[player\]' sugoroku-core-fix.js
-          grep -q "const isGote=src.includes('/white_')" direction-fix.js
+          grep -q 'shogi-face-fix.css' index.html
+          grep -q 'shogi-piece\[src\*="/white_"\]' shogi-face-fix.css
+          grep -q 'face-board-flipped' shogi-face-fix.css
+          ! grep -q "if(t==='将棋')" direction-fix.js
           ! grep -q 'getBoundingClientRect' direction-fix.js
           ! grep -q 'function syncShogi' face-to-face.js
           grep -q 'mancala-pebble.p1' glass-visuals.css
