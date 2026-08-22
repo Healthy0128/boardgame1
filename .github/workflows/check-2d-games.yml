@@ -5,6 +5,7 @@ on:
       - 'extra-games.js'
       - 'extra-games.css'
       - 'ohajiki-square.css'
+      - 'mancala-kalah-fix.js'
       - 'rich-board.js'
       - 'howto.js'
       - 'howto.css'
@@ -35,6 +36,7 @@ jobs:
         run: |
           node --check app.js
           node --check extra-games.js
+          node --check mancala-kalah-fix.js
           node --check rich-board.js
           node --check howto.js
           node --check face-to-face.js
@@ -50,6 +52,12 @@ jobs:
           for game in mancala ohajiki gomoku connect4 sugoroku hasami checkers dots; do
             grep -q "data-extra-game=\"$game\"" index.html
           done
+          grep -q 'mancala-kalah-fix.js' index.html
+          grep -q 'function pitToRing(i){return i<6?i:i+1}' mancala-kalah-fix.js
+          grep -q 'function ownStore(p){return p===0?6:13}' mancala-kalah-fix.js
+          grep -q 'if(ring===oppStore(p))continue' mancala-kalah-fix.js
+          grep -q 'const opposite=11-lastPit' mancala-kalah-fix.js
+          grep -q 'lastRing!==ownStore(p)' mancala-kalah-fix.js
           grep -q 'sugoroku-core-fix.js' index.html
           grep -q 'performance.now()-started<2000' sugoroku-core-fix.js
           grep -q 'async function stepTo' sugoroku-core-fix.js
